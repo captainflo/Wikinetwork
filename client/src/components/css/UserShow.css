@@ -1,0 +1,53 @@
+.card-profile {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 38%;
+  height: 500px;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.card-profile:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.avatar-profile{
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-top: -70px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -70px;
+  border: 8px solid #fff;
+}
+
+.background-profile{
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  height: 150px;
+  background-position: center center;
+  background-repeat: 'no-repeat';
+  background-size: 'cover';
+}
+
+.btn-edit{
+  display: block;
+  margin-top: -50px;
+  margin-left: 90%;
+  background-color: #1488CC !important;
+}
+
+.container-description {
+  padding: 60px 26px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-profile {
+    width: 100%;
+  }
+}
