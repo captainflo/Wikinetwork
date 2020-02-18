@@ -15,10 +15,10 @@ class MessageLists extends React.Component {
     this.props.readMessage(formMessage);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps !== this.props)
-  //     this.props.getAllMessageByChatroom(this.props.id);
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.messages !== this.props.messages)
+      this.props.getAllMessageByChatroom(this.props.id);
+  }
 
   renderAllMessage = () => {
     if (this.props.messages && this.props.user._id)
@@ -82,7 +82,8 @@ class MessageLists extends React.Component {
       const date = moment(this.props.chatRoom.createdAt).format("LL");
       return (
         <div>
-          <h6 className="center title-chat">Chatroom created {date}</h6>
+          <h6 className="center title-chat">Chatroom created</h6>
+          <div className="center">{date}</div>
           <hr></hr>
         </div>
       );

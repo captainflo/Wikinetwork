@@ -10,6 +10,9 @@ class Dashboard extends React.Component {
     return (
       <div className="container">
         <h4 className="center white-text">Swipe to match</h4>
+        <p className="center white-text ">
+          Swipe right Unlike / Swipe left Like
+        </p>
         {this.props.auth.firstName &&
         this.props.auth.lastName &&
         this.props.auth.avatar ? (

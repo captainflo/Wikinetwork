@@ -1,12 +1,12 @@
-import React from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import renderField from './renderField';
-import MessageLists from './MessageLists';
-import validate from './Validate';
-import '../css/ChatRoom.css';
+import React from "react";
+import { Field, reduxForm, reset } from "redux-form";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import renderField from "./renderField";
+import MessageLists from "./MessageLists";
+import validate from "./Validate";
+import "../css/ChatRoom.css";
 
 class ChatRoom extends React.Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class ChatRoom extends React.Component {
       message: message
     };
     this.props.createMessage(form);
-    dispatch(reset('MessageRoom'));
+    dispatch(reset("MessageRoom"));
   };
 
   render() {
@@ -75,5 +75,5 @@ function mapStateToPros(state) {
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: 'MessageRoom', validate })
+  reduxForm({ form: "MessageRoom", validate })
 )(ChatRoom);

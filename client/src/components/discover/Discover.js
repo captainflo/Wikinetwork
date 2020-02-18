@@ -121,7 +121,7 @@ class Discover extends React.Component {
               alt="empty"
               src={process.env.PUBLIC_URL + "/images/empty.svg"}
             />
-            no more profile
+            no more profiles
           </div>
           {this.renderAllUserTest()}
         </div>
