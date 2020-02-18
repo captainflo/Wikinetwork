@@ -101,7 +101,6 @@ class MessageLists extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     user: state.auth.authenticated,
     chatRoom: state.chat.chatroom,

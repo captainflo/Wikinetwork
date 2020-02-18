@@ -58,5 +58,6 @@
 @media only screen and (max-width: 600px) {
  .box-chatroom{
    width: 100%;
+   margin-bottom: 60px;
  }
 }
