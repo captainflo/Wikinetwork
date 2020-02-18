@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const renderField = ({
   input,
@@ -8,7 +8,7 @@ const renderField = ({
   meta: { touched, error }
 }) => (
   <div>
-    <i className="material-icons prefix">{icon}</i>
+    <i className="material-icons prefix white-text">{icon}</i>
     <input {...input} placeholder={label} type={type} />
     {touched && error && <span className="error-color">{error}</span>}
   </div>

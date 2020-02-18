@@ -1,11 +1,11 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import validate from './Validation';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import renderField from './renderField';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import validate from "./Validation";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import renderField from "./renderField";
+import { Link } from "react-router-dom";
 
 class Signup extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class Signup extends React.Component {
     const { error, handleSubmit, submitting } = this.props;
     return (
       <div className="container">
-        <h4 className="center">
+        <h4 className="center white-text">
           Sign Up <i className="fas fa-user-plus" />
         </h4>
         <div className="row">
@@ -67,7 +67,7 @@ class Signup extends React.Component {
               </div>
             </div>
             {error && <strong>{error}</strong>}
-            <div className="center">
+            <div className="center white-text">
               <button
                 type="submit"
                 disabled={submitting}
@@ -81,7 +81,7 @@ class Signup extends React.Component {
             <p>Or</p>
             <p>Sign up with</p>
             <ul>
-              <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
+              <li style={{ listStyle: "none", paddingBottom: "10px" }}>
                 <a
                   href="/auth/google"
                   className="waves-effect waves-light btn social google"
@@ -89,7 +89,7 @@ class Signup extends React.Component {
                   <i className="fab fa-google"></i>Google
                 </a>
               </li>
-              <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
+              <li style={{ listStyle: "none", paddingBottom: "10px" }}>
                 <a
                   href="/auth/linkedin"
                   className="waves-effect waves-light btn social linkedin"
@@ -117,5 +117,5 @@ function mapStateToPros(state) {
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: 'SignUpForm', validate })
+  reduxForm({ form: "SignUpForm", validate })
 )(Signup);

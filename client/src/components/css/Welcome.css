@@ -7,6 +7,30 @@
   height: 250px;
 }
 
+.box-banner{
+  margin-left: 45px;
+  margin-top: 70px;
+}
+
+.button-homepage{
+  display: block;
+  width: 120px;
+  border: 2px solid #fff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.button-homepage:hover{
+  display: block;
+  width: 120px;
+  border: 2px solid #1488CC;
+  background-color: #1488CC;
+  color: #fff;
+}
+
 @media only screen and (max-width: 600px) {
   
 }

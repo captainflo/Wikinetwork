@@ -1,15 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import TinderCard from 'react-tinder-card';
-import ModalForm from './ModalForm';
-import '../css/SwipeCard.css';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import TinderCard from "react-tinder-card";
+import ModalForm from "./ModalForm";
+import "../css/SwipeCard.css";
 
 class Discover extends React.Component {
   state = {
     isMatch: false,
-    love: '',
-    user: ''
+    love: "",
+    user: ""
   };
   componentDidMount() {
     this.props.fetchUser();
@@ -38,8 +38,8 @@ class Discover extends React.Component {
   };
 
   onSwipe = (direction, userId) => {
-    if (direction === 'right' || direction === 'up') {
-      console.log('you like');
+    if (direction === "right" || direction === "up") {
+      console.log("you like");
       this.matchDiscover(this.props.auth._id, userId, true);
       this.setState({ love: true });
     } else {
@@ -54,7 +54,7 @@ class Discover extends React.Component {
       this.props.discovers.isMatch === true &&
       this.props.auth.liked.includes(this.props.discovers.friendId)
     ) {
-      console.log('is match');
+      console.log("is match");
       this.setState({ isMatch: true });
       this.setState({ user: user });
       this.goChatRoom(this.props.auth._id, user._id);
@@ -62,7 +62,7 @@ class Discover extends React.Component {
       this.setState({ isMatch: false });
     }
     setTimeout(() => {
-      this.setState({ love: '' });
+      this.setState({ love: "" });
     }, 500);
   };
 
@@ -82,6 +82,7 @@ class Discover extends React.Component {
               key={user._id}
               onSwipe={dir => this.onSwipe(dir, user._id)}
               onCardLeftScreen={() => this.onCardLeftScreen(user)}
+              preventSwipe={["right", "left"]}
               className="swipe"
             >
               <div
@@ -90,9 +91,9 @@ class Discover extends React.Component {
                     rgba(0, 0, 0, 0.0), 
                     rgba(0, 0, 0, 0.35)
                   ),url(${user.avatar})`,
-                  backgroundPosition: 'center center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover'
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover"
                 }}
                 className="card-tinder"
               >
@@ -119,21 +120,21 @@ class Discover extends React.Component {
             <ModalForm user={this.state.user} closeModal={this.closeModal} />
           </div>
         ) : (
-          ''
+          ""
         )}
         {this.state.love === true ? (
           <div className="right love slideUp">
             <i className="far fa-thumbs-up"></i>
           </div>
         ) : (
-          ''
+          ""
         )}
         {this.state.love === false ? (
           <div className="love slideUp">
             <i class="far fa-times-circle"></i>
           </div>
         ) : (
-          ''
+          ""
         )}
       </div>
     );

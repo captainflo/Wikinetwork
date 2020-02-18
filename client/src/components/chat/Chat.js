@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { Link } from 'react-router-dom';
-import ChatList from './ChatList';
-import moment from 'moment';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import { Link } from "react-router-dom";
+import ChatList from "./ChatList";
+import moment from "moment";
 
 class Chat extends React.Component {
   componentDidMount() {
@@ -62,7 +62,7 @@ class Chat extends React.Component {
   render() {
     return (
       <div className="container">
-        <h2>Chat List</h2>
+        <h2 className="white-text">Chat List</h2>
         {this.renderAllChatRoom()}
       </div>
     );

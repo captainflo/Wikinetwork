@@ -1,11 +1,11 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import validate from './Validation';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import renderField from './renderField';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import validate from "./Validation";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import renderField from "./renderField";
+import { Link } from "react-router-dom";
 
 class Signin extends React.Component {
   submit = form => {
@@ -15,7 +15,7 @@ class Signin extends React.Component {
     const { error, handleSubmit, submitting } = this.props;
     return (
       <div className="container">
-        <h4 className="center">
+        <h4 className="center white-text">
           Sign in <i className="fas fa-user-alt"></i>
         </h4>
         <div className="row">
@@ -61,11 +61,11 @@ class Signin extends React.Component {
               </button>
             </div>
           </form>
-          <div className="center">
+          <div className="center white-text">
             <p>Or</p>
             <p>Sign in with</p>
             <ul>
-              <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
+              <li style={{ listStyle: "none", paddingBottom: "10px" }}>
                 <a
                   href="/auth/google"
                   className="waves-effect waves-light btn social google"
@@ -73,7 +73,7 @@ class Signin extends React.Component {
                   <i className="fab fa-google"></i>Google
                 </a>
               </li>
-              <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
+              <li style={{ listStyle: "none", paddingBottom: "10px" }}>
                 <a
                   href="/auth/linkedin"
                   className="waves-effect waves-light btn social linkedin"
@@ -100,5 +100,5 @@ function mapStateToPros(state) {
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: 'SignInForm', validate })
+  reduxForm({ form: "SignInForm", validate })
 )(Signin);
