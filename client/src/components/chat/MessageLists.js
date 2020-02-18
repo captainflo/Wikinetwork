@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { MessageList } from 'react-chat-elements';
-import 'react-chat-elements/dist/main.css';
-import moment from 'moment';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import { MessageList } from "react-chat-elements";
+import "react-chat-elements/dist/main.css";
+import moment from "moment";
 
 class MessageLists extends React.Component {
   componentDidMount() {
@@ -30,11 +30,11 @@ class MessageLists extends React.Component {
               key={message._id}
               className="message-list"
               lockable={true}
-              toBottomHeight={'100%'}
+              toBottomHeight={"100%"}
               dataSource={[
                 {
-                  position: 'right',
-                  type: 'text',
+                  position: "right",
+                  type: "text",
                   text: `${message.message_body}`,
                   dateString: `${date}`
                 }
@@ -47,11 +47,11 @@ class MessageLists extends React.Component {
               key={message._id}
               className="message-list"
               lockable={true}
-              toBottomHeight={'100%'}
+              toBottomHeight={"100%"}
               dataSource={[
                 {
-                  position: 'left',
-                  type: 'text',
+                  position: "left",
+                  type: "text",
                   text: `${message.message_body}`,
                   dateString: `${date}`
                 }
@@ -79,8 +79,13 @@ class MessageLists extends React.Component {
 
   renderDate = () => {
     if (this.props.chatRoom) {
-      const date = moment(this.props.chatRoom.createdAt).format('LL');
-      return <h6 className="center title-chat">Chatroom created {date}</h6>;
+      const date = moment(this.props.chatRoom.createdAt).format("LL");
+      return (
+        <div>
+          <h6 className="center title-chat">Chatroom created {date}</h6>
+          <hr></hr>
+        </div>
+      );
     }
   };
 
