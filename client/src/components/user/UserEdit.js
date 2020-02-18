@@ -1,16 +1,16 @@
-import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import validate from './Validation';
-import renderField from './renderField';
-import * as actions from '../actions';
-import ModalForm from './ModalForm';
-import normalizePhone from './normalizePhone';
+import React from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+import validate from "./Validation";
+import renderField from "./renderField";
+import * as actions from "../actions";
+import ModalForm from "./ModalForm";
+import normalizePhone from "./normalizePhone";
 
 class UserEdit extends React.Component {
   state = {
-    image: ''
+    image: ""
   };
   onDelete = () => {
     const id = this.props.auth._id;
@@ -20,12 +20,12 @@ class UserEdit extends React.Component {
   };
 
   deletePhoto = () => {
-    this.setState({ image: '' });
+    this.setState({ image: "" });
   };
 
   uploadWidget = () => {
     window.cloudinary.openUploadWidget(
-      { cloud_name: 'dxc3kuw7v', upload_preset: 'vj9pfx2t', tags: ['xmas'] },
+      { cloud_name: "dxc3kuw7v", upload_preset: "vj9pfx2t", tags: ["xmas"] },
       (error, result) => {
         if (result) {
           this.setState({ image: result[0].url });
@@ -123,7 +123,7 @@ class UserEdit extends React.Component {
               {this.state.image ? (
                 <div>
                   <div className="delete-picture" onClick={this.deletePhoto}>
-                    <i class="far fa-times-circle"></i>
+                    <i className="far fa-times-circle"></i>
                   </div>
                   <img
                     className="photo-show"
@@ -132,7 +132,7 @@ class UserEdit extends React.Component {
                   />
                 </div>
               ) : (
-                ''
+                ""
               )}
             </div>
 
@@ -161,5 +161,5 @@ function mapStateToPros(state) {
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: 'userEdit', validate })
+  reduxForm({ form: "userEdit", validate })
 )(UserEdit);

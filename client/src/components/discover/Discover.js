@@ -38,11 +38,11 @@ class Discover extends React.Component {
   };
 
   onSwipe = (direction, userId) => {
-    if (direction === "right" || direction === "up") {
+    if (direction === "right") {
       console.log("you like");
       this.matchDiscover(this.props.auth._id, userId, true);
       this.setState({ love: true });
-    } else {
+    } else if (direction === "left") {
       console.log("you don't like");
       this.matchDiscover(this.props.auth._id, userId, false);
       this.setState({ love: false });
@@ -82,7 +82,7 @@ class Discover extends React.Component {
               key={user._id}
               onSwipe={dir => this.onSwipe(dir, user._id)}
               onCardLeftScreen={() => this.onCardLeftScreen(user)}
-              preventSwipe={["right", "left"]}
+              preventSwipe={["up", "down"]}
               className="swipe"
             >
               <div
@@ -114,7 +114,17 @@ class Discover extends React.Component {
   render() {
     return (
       <div>
-        <div className="swipe-container">{this.renderAllUserTest()}</div>
+        <div className="swipe-container">
+          <div className="center white-text">
+            <img
+              className="img-empty"
+              alt="empty"
+              src={process.env.PUBLIC_URL + "/images/empty.svg"}
+            />
+            no more profile
+          </div>
+          {this.renderAllUserTest()}
+        </div>
         {this.state.isMatch === true ? (
           <div className="backgroud-modal">
             <ModalForm user={this.state.user} closeModal={this.closeModal} />
@@ -131,7 +141,7 @@ class Discover extends React.Component {
         )}
         {this.state.love === false ? (
           <div className="love slideUp">
-            <i class="far fa-times-circle"></i>
+            <i className="far fa-times-circle"></i>
           </div>
         ) : (
           ""
