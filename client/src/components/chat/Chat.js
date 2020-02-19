@@ -9,11 +9,6 @@ class Chat extends React.Component {
   componentDidMount() {
     this.props.getAllChatRoomByUSer(this.props.match.params.id);
   }
-
-  componentDidUpdate(prevProps) {
-    this.props.getAllChatRoomByUSer(this.props.match.params.id);
-  }
-
   renderAllChatRoom = () => {
     if (this.props.chats)
       return this.props.chats.map(chat => {
@@ -74,7 +69,6 @@ class Chat extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated,
     chats: state.chat.allChatByUser

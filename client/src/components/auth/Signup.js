@@ -67,7 +67,7 @@ class Signup extends React.Component {
               </div>
             </div>
             {error && <strong>{error}</strong>}
-            <div className="center white-text">
+            <div className="center">
               <button
                 type="submit"
                 disabled={submitting}
@@ -77,7 +77,7 @@ class Signup extends React.Component {
               </button>
             </div>
           </form>
-          <div className="center">
+          <div className="center white-text">
             <p>Or</p>
             <p>Sign up with</p>
             <ul>
