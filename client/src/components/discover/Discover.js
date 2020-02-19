@@ -66,7 +66,7 @@ class Discover extends React.Component {
     }, 500);
   };
 
-  renderAllUserTest = () => {
+  renderAllUser = () => {
     if (this.props.users)
       return this.props.users.map(user => {
         if (
@@ -123,7 +123,7 @@ class Discover extends React.Component {
             />
             no more profiles
           </div>
-          {this.renderAllUserTest()}
+          {this.renderAllUser()}
         </div>
         {this.state.isMatch === true ? (
           <div className="backgroud-modal">

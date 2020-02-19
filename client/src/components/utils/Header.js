@@ -13,7 +13,7 @@ class Header extends React.Component {
           </li>
           <li>
             <Link to={`/dashboard/${this.props.authenticated._id}`}>
-              Dashboard
+              Discover
             </Link>
           </li>
           <li>
@@ -48,7 +48,7 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
-              Wiki Network
+              WikiNetwork
             </Link>
             <a href="#/" data-target="slide-out" className="sidenav-trigger">
               <i className="material-icons">menu</i>

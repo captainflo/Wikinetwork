@@ -5,6 +5,7 @@ import * as actions from "../actions";
 import "../css/Welcome.css";
 import Footer from "../utils/Footer";
 import { Parallax } from "react-materialize";
+import "../css/Welcome.css";
 
 class Welcome extends React.Component {
   onSubmit = formValues => {
@@ -24,7 +25,7 @@ class Welcome extends React.Component {
             }}
           >
             <div className="box-banner">
-              <h3>Networking For Everyone</h3>
+              <h3 className="title-first">Networking For Everyone</h3>
               <p>
                 A tap away from valuable connections that expand opportunities.
               </p>
@@ -74,9 +75,10 @@ class Welcome extends React.Component {
               <img
                 alt=""
                 src={process.env.PUBLIC_URL + "/images/banner2.jpg"}
+                className="last-banner"
               />
             }
-            className="image-parallax"
+            className="image-parallax hide-on-small-only"
             options={{
               responsiveThreshold: 0
             }}

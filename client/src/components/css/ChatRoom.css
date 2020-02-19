@@ -55,6 +55,15 @@
 .rce-citem:hover {
   background-color: rgba(0,0,0,0.1);
 }
+
+.rce-mbox-right-notch {
+  fill: #1488CC;
+}
+
+.rce-mbox.rce-mbox-right {
+  background: #1488CC;
+  color: #fff
+}
 @media only screen and (max-width: 600px) {
  .box-chatroom{
    width: 100%;
