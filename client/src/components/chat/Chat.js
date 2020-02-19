@@ -11,8 +11,7 @@ class Chat extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props)
-      this.props.getAllMessageByChatroom(this.props.id);
+    this.props.getAllChatRoomByUSer(this.props.match.params.id);
   }
 
   renderAllChatRoom = () => {
