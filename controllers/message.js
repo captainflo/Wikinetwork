@@ -4,7 +4,7 @@ const Chat = require("../models/Chat");
 exports.createMessage = function(req, res, next) {
   const room = req.body.room;
   const user = req.body.user;
-  const message_body = req.body.message.message;
+  const message_body = req.body.message;
 
   const message = new Message({
     room: room,

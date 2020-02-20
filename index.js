@@ -61,12 +61,16 @@ server.listen(PORT);
 io.on("connection", socket => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
+  // Send Message
   socket.on("chat message", msg => {
-    const form = {
+    const msgForm = {
       id: id,
-      msg: msg
+      msg: msg.message,
+      user: msg.user,
+      room: msg.room,
+      date: msg.date
     };
-    // console.log(`${id}: ${msg}`);
-    io.emit("chat message", form);
+    console.log(msg);
+    io.emit("chat message", msgForm);
   });
 });

@@ -16,6 +16,7 @@ import Dashboard from "./dasboard/Dashboard";
 import ChatRoom from "./chat/ChatRoom";
 import Chat from "./chat/Chat";
 import ChatSocket from "./pages/ChatSocket";
+import ChatRoomSocket from "./chat/ChatRoomSocket";
 
 class App extends React.Component {
   componentDidMount() {
@@ -34,13 +35,14 @@ class App extends React.Component {
           <Route path="/signout" component={Signout} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
-          <Route path="/chat" component={ChatSocket} />
+          <Route path="/chatsocket/:id" component={ChatSocket} />
 
           {this.props.authenticated ? (
             <div>
               <Route path="/user/:id" component={UserShow} />
               <Route path="/user/edit/:id" component={UserEdit} />
-              <Route path="/chatroom/:id" component={ChatRoom} />
+              {/* <Route path="/chatroom/:id" component={ChatRoom} /> */}
+              <Route path="/chatroom/:id" component={ChatRoomSocket} />
               <Route path="/chat/:id" component={Chat} />
               <Route path="/dashboard/:id" component={Dashboard} />
             </div>
