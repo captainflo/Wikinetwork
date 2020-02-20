@@ -60,9 +60,11 @@ class Chat extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h4 className="white-text">Chat List</h4>
-        {this.renderAllChatRoom()}
+      <div className="background-chatlist">
+        <div className="container">
+          <h4 className="white-text">Chat List</h4>
+          {this.renderAllChatRoom()}
+        </div>
       </div>
     );
   }

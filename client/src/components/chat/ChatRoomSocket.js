@@ -101,13 +101,12 @@ class ChatRoomSocket extends Component {
     return (
       <div className="background-chat">
         <div className="container">
+          <div className="box-date white-text">
+            <h5 className="center title-chat">
+              Chatroom <i className="far fa-comments"></i>
+            </h5>
+          </div>
           <div className="box-chatroom">
-            <div className="box-date white-text">
-              <h5 className="center title-chat">
-                Chatroom <i className="far fa-comments"></i>
-              </h5>
-              {/* <div className="center">{date}</div> */}
-            </div>
             {this.props.messages && <div>{this.renderOldMessage()}</div>}
             <div>{this.renderChat()}</div>
           </div>

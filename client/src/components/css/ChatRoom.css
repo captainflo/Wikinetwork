@@ -1,3 +1,11 @@
+.background-chatlist{
+  background-image: url(/images/friends.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 400px 300px;
+  min-height: 500px;
+}
+
 .background-chat{
   background-image: url(/images/chat.svg);
   background-repeat: no-repeat;
@@ -77,6 +85,12 @@
    max-height: 590px;
    overflow: auto;
  }
+
+ .background-chatlist{
+  background-size: 300px 300px;
+  max-height: 100vh;
+  background-position: bottom;
+}
 
  .box-message{
   width: 90%;

@@ -14,7 +14,6 @@ import UserShow from "./user/UserShow";
 import UserEdit from "./user/UserEdit";
 import Dashboard from "./dasboard/Dashboard";
 import Chat from "./chat/Chat";
-import ChatSocket from "./pages/ChatSocket";
 import ChatRoomSocket from "./chat/ChatRoomSocket";
 
 class App extends React.Component {
@@ -34,7 +33,6 @@ class App extends React.Component {
           <Route path="/signout" component={Signout} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
-          <Route path="/chatsocket/:id" component={ChatSocket} />
 
           {this.props.authenticated ? (
             <div>
