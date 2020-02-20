@@ -70,7 +70,7 @@ class ChatRoomSocket extends Component {
 
   renderChat() {
     const { chat } = this.state;
-    return chat.map(({ id, msg, date }, idx) => (
+    return chat.map(({ id, msg, user, date }, idx) => (
       <MessageList
         key={idx}
         className="message-list"
@@ -78,7 +78,9 @@ class ChatRoomSocket extends Component {
         toBottomHeight={"100%"}
         dataSource={[
           {
-            position: "right",
+            position: `${
+              user === this.props.authenticated._id ? "right" : "left"
+            }`,
             type: "text",
             text: `${msg}`,
             dateString: `${moment(date).calendar()}`
