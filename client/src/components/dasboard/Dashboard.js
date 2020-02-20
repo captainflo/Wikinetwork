@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
-        <h4 className="center white-text">Swipe to match</h4>
+        <h4 className="center white-text">Swipe to match!</h4>
         <p className="center white-text ">
           Swipe right Unlike / Swipe left Like
         </p>

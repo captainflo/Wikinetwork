@@ -13,7 +13,6 @@ import Signup from "./auth/Signup";
 import UserShow from "./user/UserShow";
 import UserEdit from "./user/UserEdit";
 import Dashboard from "./dasboard/Dashboard";
-import ChatRoom from "./chat/ChatRoom";
 import Chat from "./chat/Chat";
 import ChatSocket from "./pages/ChatSocket";
 import ChatRoomSocket from "./chat/ChatRoomSocket";
@@ -39,9 +38,8 @@ class App extends React.Component {
 
           {this.props.authenticated ? (
             <div>
-              <Route path="/user/:id" component={UserShow} />
+              <Route exact path="/user/:id" component={UserShow} />
               <Route path="/user/edit/:id" component={UserEdit} />
-              {/* <Route path="/chatroom/:id" component={ChatRoom} /> */}
               <Route path="/chatroom/:id" component={ChatRoomSocket} />
               <Route path="/chat/:id" component={Chat} />
               <Route path="/dashboard/:id" component={Dashboard} />

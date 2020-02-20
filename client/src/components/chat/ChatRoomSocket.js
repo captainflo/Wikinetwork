@@ -6,6 +6,7 @@ import keys from "../../config/keys";
 import { MessageList } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import moment from "moment";
+import "../css/ChatRoom.css";
 
 const socket = io.connect(`${keys.siteUrl}`);
 
@@ -23,6 +24,12 @@ class ChatRoomSocket extends Component {
         });
       }
     });
+
+    // let formMessage = {
+    //   user: this.props.myUserId,
+    //   room: this.props.id
+    // };
+    // this.props.readMessage(formMessage);
   }
 
   onTextChange = e => {
@@ -90,40 +97,41 @@ class ChatRoomSocket extends Component {
     ));
   }
 
-  renderDate = () => {
-    if (this.props.chatRoom) {
-      console.log("hello");
-      const date = moment(this.props.chatRoom.createdAt).format("LL");
-      return (
-        <div>
-          <h6 className="center title-chat">Chatroom created</h6>
-          <div className="center">{date}</div>
-          <hr></hr>
-        </div>
-      );
-    }
-  };
-
   render() {
     return (
-      <div className="container">
-        {this.renderDate()}
-        {this.props.messages && <div>{this.renderOldMessage()}</div>}
-        <div>{this.renderChat()}</div>
-
-        <input
-          style={{ color: "white" }}
-          onChange={e => this.onTextChange(e)}
-          value={this.state.msg}
-        />
-        <button
-          className="waves-effect waves-light btn btn-signin btn-message"
-          onClick={this.onMessageSubmit}
-        >
-          Send
-        </button>
-
-        {this.state.error && <div>{this.state.error}</div>}
+      <div className="background-chat">
+        <div className="container">
+          <div className="box-chatroom">
+            <div className="box-date white-text">
+              <h5 className="center title-chat">
+                Chatroom <i className="far fa-comments"></i>
+              </h5>
+              {/* <div className="center">{date}</div> */}
+            </div>
+            {this.props.messages && <div>{this.renderOldMessage()}</div>}
+            <div>{this.renderChat()}</div>
+          </div>
+          <div className="box-message">
+            <div className="input-field">
+              <i className="material-icons prefix">message</i>
+              <input
+                style={{ color: "white" }}
+                onChange={e => this.onTextChange(e)}
+                value={this.state.msg}
+                id="icon_prefix"
+                className="validate"
+                type="text"
+              />
+            </div>
+            <button
+              className="waves-effect waves-light btn btn-signin btn-message"
+              onClick={this.onMessageSubmit}
+            >
+              Send
+            </button>
+            {this.state.error && <div>{this.state.error}</div>}
+          </div>
+        </div>
       </div>
     );
   }
