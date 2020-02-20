@@ -15,11 +15,6 @@ class MessageLists extends React.Component {
     this.props.readMessage(formMessage);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.messages !== this.props.messages)
-      this.props.getAllMessageByChatroom(this.props.id);
-  }
-
   renderAllMessage = () => {
     if (this.props.messages && this.props.user._id)
       return this.props.messages.map(message => {
