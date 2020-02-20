@@ -8,6 +8,9 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require("cors");
 
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
+
 require("./models/User");
 require("./services/passport");
 
@@ -52,4 +55,18 @@ if (process.env.NODE_ENV === "production") {
 // Server Setup
 const PORT = process.env.PORT || 3001;
 console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-app.listen(PORT);
+server.listen(PORT);
+
+//// Socket Io ////////////
+io.on("connection", socket => {
+  const { id } = socket.client;
+  console.log(`User connected: ${id}`);
+  socket.on("chat message", msg => {
+    const form = {
+      id: id,
+      msg: msg
+    };
+    // console.log(`${id}: ${msg}`);
+    io.emit("chat message", form);
+  });
+});
