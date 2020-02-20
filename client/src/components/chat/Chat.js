@@ -12,7 +12,7 @@ class Chat extends React.Component {
   renderAllChatRoom = () => {
     if (this.props.chats)
       return this.props.chats.map(chat => {
-        const date = moment(chat.updatedAt).calendar();
+        const date = moment(chat.createdAt).calendar();
         if (chat.sender === this.props.match.params.id) {
           return (
             <div key={chat._id}>
