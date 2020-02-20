@@ -17,19 +17,20 @@ class ChatRoomSocket extends Component {
   }
   componentDidMount() {
     this.props.getAllMessageByChatroom(this.props.match.params.id);
+    const { authenticated } = this.props;
+    let formMessage = {
+      user: authenticated._id,
+      room: this.props.match.params.id
+    };
+    this.props.readMessage(formMessage);
     socket.on("chat message", msg => {
       if (msg.room === this.props.match.params.id) {
         this.setState({
           chat: [...this.state.chat, msg]
         });
       }
+      this.props.readMessage(formMessage);
     });
-
-    // let formMessage = {
-    //   user: this.props.myUserId,
-    //   room: this.props.id
-    // };
-    // this.props.readMessage(formMessage);
   }
 
   onTextChange = e => {
@@ -136,7 +137,6 @@ class ChatRoomSocket extends Component {
   }
 }
 function mapStateToPros(state) {
-  console.log(state);
   return {
     authenticated: state.auth.authenticated,
     messages: state.message.allMessage,
