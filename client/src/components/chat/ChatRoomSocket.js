@@ -8,8 +8,6 @@ import "react-chat-elements/dist/main.css";
 import moment from "moment";
 import "../css/ChatRoom.css";
 const audio = new Audio(process.env.PUBLIC_URL + "/images/clearly.mp3");
-const audioReceive = new Audio(process.env.PUBLIC_URL + "/images/pop.mp3");
-
 const socket = io.connect(`${keys.siteUrl}`);
 
 class ChatRoomSocket extends Component {
@@ -30,7 +28,7 @@ class ChatRoomSocket extends Component {
         this.setState({
           chat: [...this.state.chat, msg]
         });
-        audioReceive.play();
+        audio.play();
       }
       this.props.readMessage(formMessage);
     });
