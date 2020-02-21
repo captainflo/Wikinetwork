@@ -4,10 +4,17 @@ import * as actions from "../actions";
 import { Link } from "react-router-dom";
 import ChatList from "./ChatList";
 import moment from "moment";
+import io from "socket.io-client";
+import keys from "../../config/keys";
+
+const socket = io.connect(`${keys.siteUrl}`);
 
 class Chat extends React.Component {
   componentDidMount() {
     this.props.getAllChatRoomByUSer(this.props.match.params.id);
+    socket.on("chat message", msg => {
+      this.props.getAllChatRoomByUSer(this.props.match.params.id);
+    });
   }
   renderAllChatRoom = () => {
     if (this.props.chats)

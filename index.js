@@ -73,4 +73,8 @@ io.on("connection", socket => {
     console.log(msg);
     io.emit("chat message", msgForm);
   });
+
+  socket.on("update chatlist", () => {
+    io.emit("update chatlist");
+  });
 });

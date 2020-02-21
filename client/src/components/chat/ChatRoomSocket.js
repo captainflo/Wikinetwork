@@ -49,6 +49,7 @@ class ChatRoomSocket extends Component {
       socket.emit("chat message", form);
       this.props.createMessage(form);
       this.setState({ msg: "" });
+      socket.emit("update chatlist");
     } else {
       this.setState({ error: "there is no message" });
     }
