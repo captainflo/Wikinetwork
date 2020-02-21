@@ -1,5 +1,5 @@
-import keys from '../../config/keys';
-import axios from 'axios';
+import keys from "../../config/keys";
+import axios from "axios";
 import {
   AUTH_USER,
   AUTH_ERROR,
@@ -15,8 +15,8 @@ import {
   GET_DISCOVERS_ERROR,
   CREATE_CHAT,
   ERROR_CHAT,
-  GET_CHATROOM,
-  CHATROOM_ERROR,
+  GET_USERS_BY_CHATROOM,
+  GET_USERS_BY_CHATROOM_ERROR,
   CREATE_MESSAGE,
   MESSAGE_ERROR,
   GET_MESSAGE,
@@ -24,8 +24,8 @@ import {
   ERROR_ALL_CHAT_BY_USER,
   READ_MESSAGE,
   ERROR_READ_MESSAGE
-} from './types';
-import * as JWT from 'jwt-decode';
+} from "./types";
+import * as JWT from "jwt-decode";
 
 ///////////////////////////////// User Authentification ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +33,7 @@ import * as JWT from 'jwt-decode';
 export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post(`${keys.siteUrl}/signup`, formProps);
-    localStorage.setItem('token', response.data.token);
+    localStorage.setItem("token", response.data.token);
     // then when you have the token decode it.
     let token = localStorage.token;
     if (token) {
@@ -52,7 +52,7 @@ export const signup = (formProps, callback) => async dispatch => {
       token = null;
     }
   } catch (e) {
-    dispatch({ type: AUTH_ERROR_SIGNUP, payload: 'Email in use' });
+    dispatch({ type: AUTH_ERROR_SIGNUP, payload: "Email in use" });
   }
 };
 
@@ -60,7 +60,7 @@ export const signup = (formProps, callback) => async dispatch => {
 export const signin = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post(`${keys.siteUrl}/signin`, formProps);
-    localStorage.setItem('token', response.data.token);
+    localStorage.setItem("token", response.data.token);
     // then when you have the token decode it.
     let token = localStorage.token;
     if (token) {
@@ -79,23 +79,23 @@ export const signin = (formProps, callback) => async dispatch => {
       token = null;
     }
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: 'Invalid login credentials' });
+    dispatch({ type: AUTH_ERROR, payload: "Invalid login credentials" });
   }
 };
 
 // Signout User by Auth or Passport JWT
 export const signout = () => async dispatch => {
   // Signout for Auth(Google, insta, linkedin, facebook)
-  await axios.get('/api/logout');
-  dispatch({ type: AUTH_USER, payload: '' });
-  localStorage.removeItem('token');
-  dispatch({ type: AUTH_ERROR, payload: '' });
+  await axios.get("/api/logout");
+  dispatch({ type: AUTH_USER, payload: "" });
+  localStorage.removeItem("token");
+  dispatch({ type: AUTH_ERROR, payload: "" });
 };
 
 // Fetch the user by Passport JWT
 export const fetchUser = () => async dispatch => {
   try {
-    const res = await axios.get('/api/current_user');
+    const res = await axios.get("/api/current_user");
     let token = localStorage.token;
     if (token) {
       // Decode token
@@ -113,27 +113,27 @@ export const fetchUser = () => async dispatch => {
       dispatch({ type: AUTH_USER, payload: res.data });
     }
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: 'Invalid login credentials' });
+    dispatch({ type: AUTH_ERROR, payload: "Invalid login credentials" });
   }
 };
 
 // Edit User
 export const editUser = (id, formValues, callback) => async dispatch => {
   try {
-    dispatch({ type: AUTH_ERROR, payload: '' });
+    dispatch({ type: AUTH_ERROR, payload: "" });
     const response = await axios.post(`/api/user/${id}`, formValues);
     dispatch({ type: EDIT_USER, payload: response.data });
     callback(); /* history callback */
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: 'Cannot edit user' });
+    dispatch({ type: AUTH_ERROR, payload: "Cannot edit user" });
   }
 };
 
 // Edit delete
 export const deleteUser = (id, callback) => async dispatch => {
   await axios.delete(`/api/user/${id}`);
-  dispatch({ type: EDIT_USER, payload: '' });
-  localStorage.removeItem('token');
+  dispatch({ type: EDIT_USER, payload: "" });
+  localStorage.removeItem("token");
   callback(); /* history callback */
 };
 
@@ -145,7 +145,7 @@ export const getAllUser = () => async dispatch => {
   } catch (e) {
     dispatch({
       type: GET_ALL_USERS_ERROR,
-      payload: 'cannot find the users'
+      payload: "cannot find the users"
     });
   }
 };
@@ -159,7 +159,7 @@ export const getAllDiscover = () => async dispatch => {
   } catch (e) {
     dispatch({
       type: GET_ALL_DISCOVERS_ERROR,
-      payload: 'error to get all discover'
+      payload: "error to get all discover"
     });
   }
 };
@@ -172,7 +172,7 @@ export const getDiscoverByUser = id => async dispatch => {
   } catch (e) {
     dispatch({
       type: GET_DISCOVERS_ERROR,
-      payload: 'cannot find the discovers by user'
+      payload: "cannot find the discovers by user"
     });
   }
 };
@@ -185,7 +185,7 @@ export const createDiscover = formValues => async dispatch => {
   } catch (e) {
     dispatch({
       type: DISCOVER_ERROR,
-      payload: 'error to create discover'
+      payload: "error to create discover"
     });
   }
 };
@@ -198,20 +198,20 @@ export const createChatRoom = formValues => async dispatch => {
   } catch (e) {
     dispatch({
       type: ERROR_CHAT,
-      payload: 'error to create chatroom'
+      payload: "error to create chatroom"
     });
   }
 };
 
 // Get chatRoom by id
-export const getChatroom = id => async dispatch => {
+export const getUsersChatroom = id => async dispatch => {
   try {
     const response = await axios.post(`/api/chatroom/${id}`);
-    dispatch({ type: GET_CHATROOM, payload: response.data });
+    dispatch({ type: GET_USERS_BY_CHATROOM, payload: response.data });
   } catch (e) {
     dispatch({
-      type: CHATROOM_ERROR,
-      payload: 'error to get chatroom'
+      type: GET_USERS_BY_CHATROOM_ERROR,
+      payload: "error to get users chatroom"
     });
   }
 };
@@ -225,7 +225,7 @@ export const getAllChatRoomByUSer = (id, callback) => async dispatch => {
   } catch (e) {
     dispatch({
       type: ERROR_ALL_CHAT_BY_USER,
-      payload: 'error to get all chatroom by user'
+      payload: "error to get all chatroom by user"
     });
   }
 };
@@ -238,7 +238,7 @@ export const createMessage = message => async dispatch => {
   } catch (e) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: 'error to create message'
+      payload: "error to create message"
     });
   }
 };
@@ -251,7 +251,7 @@ export const getAllMessageByChatroom = id => async dispatch => {
   } catch (e) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: 'error to get message'
+      payload: "error to get message"
     });
   }
 };
@@ -264,7 +264,7 @@ export const readMessage = form => async dispatch => {
   } catch (e) {
     dispatch({
       type: ERROR_READ_MESSAGE,
-      payload: 'error to get unread message'
+      payload: "error to get unread message"
     });
   }
 };

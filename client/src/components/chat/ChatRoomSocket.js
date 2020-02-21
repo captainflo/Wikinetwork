@@ -22,6 +22,7 @@ class ChatRoomSocket extends Component {
       user: authenticated._id,
       room: this.props.match.params.id
     };
+    this.props.getUsersChatroom(this.props.match.params.id);
     this.props.readMessage(formMessage);
     socket.on("chat message", msg => {
       if (msg.room === this.props.match.params.id) {
@@ -101,6 +102,24 @@ class ChatRoomSocket extends Component {
     ));
   }
 
+  renderUser = () => {
+    if (this.props.users && this.props.authenticated)
+      return this.props.users.map(user => {
+        if (user._id !== this.props.authenticated._id) {
+          return (
+            <img
+              key={user._id}
+              className="avatar"
+              src={user.avatar}
+              alt="avatar"
+            ></img>
+          );
+        } else {
+          return null;
+        }
+      });
+  };
+
   render() {
     return (
       <div className="background-chat">
@@ -109,12 +128,16 @@ class ChatRoomSocket extends Component {
             <h5 className="center title-chat">
               Chatroom <i className="far fa-comments"></i>
             </h5>
+            <div className="center">{this.renderUser()}</div>
           </div>
           <div className="box-chatroom">
             {this.props.messages && <div>{this.renderOldMessage()}</div>}
             <div>{this.renderChat()}</div>
           </div>
           <div className="box-message">
+            {this.state.error && (
+              <div className="red-text center">{this.state.error}</div>
+            )}
             <div className="input-field">
               <i className="material-icons prefix">message</i>
               <input
@@ -132,7 +155,6 @@ class ChatRoomSocket extends Component {
             >
               Send
             </button>
-            {this.state.error && <div>{this.state.error}</div>}
           </div>
         </div>
       </div>
@@ -140,7 +162,9 @@ class ChatRoomSocket extends Component {
   }
 }
 function mapStateToPros(state) {
+  console.log(state);
   return {
+    users: state.chat.users,
     authenticated: state.auth.authenticated,
     messages: state.message.allMessage,
     chatRoom: state.chat.chatroom

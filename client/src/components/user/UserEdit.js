@@ -25,7 +25,7 @@ class UserEdit extends React.Component {
 
   uploadWidget = () => {
     window.cloudinary.openUploadWidget(
-      { cloud_name: "dxc3kuw7v", upload_preset: "vj9pfx2t", tags: ["xmas"] },
+      { cloud_name: "dwtc6zep7", upload_preset: "xglbitak", tags: ["xmas"] },
       (error, result) => {
         if (result) {
           this.setState({ image: result[0].url });

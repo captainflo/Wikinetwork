@@ -1,5 +1,5 @@
-const Chat = require('../models/Chat');
-const User = require('../models/User');
+const Chat = require("../models/Chat");
+const User = require("../models/User");
 
 exports.createChatroom = function(req, res, next) {
   const sender = req.body.sender;
@@ -23,7 +23,7 @@ exports.createChatroom = function(req, res, next) {
     { new: true },
     err => {
       if (err) {
-        console.log('Something wrong when updating data!');
+        console.log("Something wrong when updating data!");
       }
     }
   );
@@ -33,19 +33,19 @@ exports.createChatroom = function(req, res, next) {
     { new: true },
     err => {
       if (err) {
-        console.log('Something wrong when updating data!');
+        console.log("Something wrong when updating data!");
       }
     }
   );
 };
 
-exports.getChatroom = function(req, res, next) {
-  Chat.findOne({ _id: req.params.id }, function(error, chat) {
-    if (error) {
-      return next(error);
-    }
-    res.send(chat);
-  });
+exports.getAllUserByChatroom = function(req, res, next) {
+  User.find({ chatroom: req.params.id })
+    .populate("chatroom")
+    .exec(function(err, users) {
+      if (err) return handleError(err);
+      res.send(users);
+    });
 };
 
 exports.getReceiver = function(req, res, next) {

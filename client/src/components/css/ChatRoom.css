@@ -16,12 +16,16 @@
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-  /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23); */
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
   border-radius: 10px;
   padding: 15px;
   max-height: 450px;
   overflow: auto;
+}
+
+.box-date{
+ margin-bottom: 20px;
 }
 
 .box-message{
@@ -79,10 +83,14 @@
   background: #1488CC;
   color: #fff
 }
+
+.rce-container-mlist{
+  margin-bottom: 3px;
+}
 @media only screen and (max-width: 600px) {
  .box-chatroom{
    width: 100%;
-   max-height: 590px;
+   max-height: 520px;
    overflow: auto;
  }
 
