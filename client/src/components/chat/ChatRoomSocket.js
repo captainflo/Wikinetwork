@@ -7,6 +7,7 @@ import { MessageList } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import moment from "moment";
 import "../css/ChatRoom.css";
+const audio = new Audio(process.env.PUBLIC_URL + "/images/clearly.mp3");
 
 const socket = io.connect(`${keys.siteUrl}`);
 
@@ -28,6 +29,7 @@ class ChatRoomSocket extends Component {
         this.setState({
           chat: [...this.state.chat, msg]
         });
+        audio.play();
       }
       this.props.readMessage(formMessage);
     });
@@ -50,6 +52,7 @@ class ChatRoomSocket extends Component {
       this.props.createMessage(form);
       this.setState({ msg: "" });
       socket.emit("update chatlist");
+      audio.play();
     } else {
       this.setState({ error: "there is no message" });
     }
