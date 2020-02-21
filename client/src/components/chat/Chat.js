@@ -12,14 +12,14 @@ const socket = io.connect(`${keys.siteUrl}`);
 class Chat extends React.Component {
   componentDidMount() {
     this.props.getAllChatRoomByUSer(this.props.match.params.id);
-    socket.on("chat message", msg => {
+    socket.on("chat message", () => {
       this.props.getAllChatRoomByUSer(this.props.match.params.id);
     });
   }
   renderAllChatRoom = () => {
     if (this.props.chats)
       return this.props.chats.map(chat => {
-        const date = moment(chat.createdAt).calendar();
+        let date = moment(chat.createdAt).calendar();
         if (chat.sender === this.props.match.params.id) {
           return (
             <div key={chat._id}>
@@ -29,6 +29,7 @@ class Chat extends React.Component {
                   chatId={chat._id}
                   date={date}
                   user={chat.receiver}
+                  msg={chat.lastMessage}
                 />
               </Link>
             </div>
@@ -42,6 +43,7 @@ class Chat extends React.Component {
                   chatId={chat._id}
                   date={date}
                   user={chat.sender}
+                  msg={chat.lastMessage}
                 />
               </Link>
             </div>
@@ -78,6 +80,7 @@ class Chat extends React.Component {
 }
 
 function mapStateToPros(state) {
+  console.log(state);
   return {
     auth: state.auth.authenticated,
     chats: state.chat.allChatByUser

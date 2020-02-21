@@ -19,7 +19,7 @@ class ChatLists extends React.Component {
                 avatar={user.avatar}
                 alt={"Reactjs"}
                 title={user.firstName}
-                subtitle={user.email}
+                subtitle={this.props.msg}
                 dateString={`Created ${this.props.date}`}
                 unread={this.props.messageUnread.length}
               />
@@ -40,7 +40,6 @@ class ChatLists extends React.Component {
 function mapStateToPros(state) {
   return {
     users: state.user.allUsers,
-    messages: state.message.allMessage,
     unread: state.message.unreadMessage
   };
 }
