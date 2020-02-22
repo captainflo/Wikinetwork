@@ -7,6 +7,8 @@ import {
   EDIT_USER,
   GET_ALL_USERS,
   GET_ALL_USERS_ERROR,
+  GET_USER,
+  GET_USER_ERROR,
   CREATE_DISCOVER,
   DISCOVER_ERROR,
   GET_ALL_DISCOVERS,
@@ -146,6 +148,18 @@ export const getAllUser = () => async dispatch => {
     dispatch({
       type: GET_ALL_USERS_ERROR,
       payload: "cannot find the users"
+    });
+  }
+};
+
+export const getUser = id => async dispatch => {
+  try {
+    const response = await axios.post(`/api/chatroom/user/${id}`);
+    dispatch({ type: GET_USER, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: GET_USER_ERROR,
+      payload: "cannot find the user"
     });
   }
 };

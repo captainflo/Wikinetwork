@@ -1,7 +1,7 @@
-const User = require('../models/User');
-const jwt = require('jwt-simple');
-const config = require('../config/keys');
-const bcrypt = require('bcrypt-nodejs');
+const User = require("../models/User");
+const jwt = require("jwt-simple");
+const config = require("../config/keys");
+const bcrypt = require("bcrypt-nodejs");
 
 // function for uncode user
 function tokenForUser(user) {
@@ -19,7 +19,7 @@ exports.signup = function(req, res, next) {
   if (!email || !password) {
     return res
       .status(422)
-      .send({ error: 'You must provide email and password' });
+      .send({ error: "You must provide email and password" });
   }
   // See if user with the given email exists
   User.findOne({ email: email }, function(error, existingUser) {
@@ -28,7 +28,7 @@ exports.signup = function(req, res, next) {
     }
     // if a user with email does exist, return an error
     if (existingUser) {
-      return res.status(422).send({ error: 'Email is in use' });
+      return res.status(422).send({ error: "Email is in use" });
     }
     // if a user with email does not exist, create and save record
     const user = new User({
@@ -76,4 +76,13 @@ exports.deleteUser = function(req, res, next) {
     .catch(function(err) {
       res.json(err);
     });
+};
+
+exports.getUser = function(req, res, next) {
+  User.findOne({ _id: req.params.id }, function(error, user) {
+    if (error) {
+      return next(error);
+    }
+    res.send(user);
+  });
 };

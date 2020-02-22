@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import io from "socket.io-client";
 import keys from "../../config/keys";
+import { Link } from "react-router-dom";
 import { MessageList } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import moment from "moment";
@@ -107,12 +108,9 @@ class ChatRoomSocket extends Component {
       return this.props.users.map(user => {
         if (user._id !== this.props.authenticated._id) {
           return (
-            <img
-              key={user._id}
-              className="avatar"
-              src={user.avatar}
-              alt="avatar"
-            ></img>
+            <Link key={user._id} to={`/chatroom/user/${user._id}`}>
+              <img className="avatar" src={user.avatar} alt="avatar"></img>
+            </Link>
           );
         } else {
           return null;
