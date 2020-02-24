@@ -108,7 +108,11 @@ class ChatRoomSocket extends Component {
       return this.props.users.map(user => {
         if (user._id !== this.props.authenticated._id) {
           return (
-            <Link key={user._id} to={`/chatroom/user/${user._id}`}>
+            <Link
+              className="hoverable"
+              key={user._id}
+              to={`/chatroom/user/${user._id}`}
+            >
               <img className="avatar" src={user.avatar} alt="avatar"></img>
             </Link>
           );
@@ -160,7 +164,6 @@ class ChatRoomSocket extends Component {
   }
 }
 function mapStateToPros(state) {
-  console.log(state);
   return {
     users: state.chat.users,
     authenticated: state.auth.authenticated,

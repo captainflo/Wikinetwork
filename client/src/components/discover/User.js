@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import * as actions from "../actions";
 import "../css/User.css";
 
@@ -10,7 +9,6 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
     return (
       <div className="container">
         <div className="row">

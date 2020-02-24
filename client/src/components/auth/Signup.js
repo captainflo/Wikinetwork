@@ -109,7 +109,6 @@ class Signup extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     errorMessage: state.auth.errorSignup
   };

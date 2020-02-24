@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
       <div className="container">
         <h4 className="center white-text">Swipe to match!</h4>
         <p className="center white-text ">
-          Swipe right Unlike / Swipe left Like
+          Swipe left Unlike - Swipe right like
         </p>
         {this.props.auth.firstName &&
         this.props.auth.lastName &&

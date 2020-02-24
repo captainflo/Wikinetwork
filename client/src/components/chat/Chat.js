@@ -6,6 +6,7 @@ import ChatList from "./ChatList";
 import moment from "moment";
 import io from "socket.io-client";
 import keys from "../../config/keys";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const socket = io.connect(`${keys.siteUrl}`);
 
@@ -19,7 +20,7 @@ class Chat extends React.Component {
   renderAllChatRoom = () => {
     if (this.props.chats)
       return this.props.chats.map(chat => {
-        let date = moment(chat.createdAt).calendar();
+        let date = moment(chat.dateMessage).calendar();
         if (chat.sender === this.props.match.params.id) {
           return (
             <div key={chat._id}>
@@ -72,7 +73,9 @@ class Chat extends React.Component {
       <div className="background-chatlist">
         <div className="container">
           <h4 className="white-text">Chat List</h4>
-          {this.renderAllChatRoom()}
+          <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
+            {this.renderAllChatRoom()}
+          </ScrollAnimation>
         </div>
       </div>
     );
@@ -80,7 +83,6 @@ class Chat extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated,
     chats: state.chat.allChatByUser

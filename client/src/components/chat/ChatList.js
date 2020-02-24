@@ -20,7 +20,7 @@ class ChatLists extends React.Component {
                 alt={"Reactjs"}
                 title={user.firstName}
                 subtitle={this.props.msg}
-                dateString={`Created ${this.props.date}`}
+                dateString={this.props.date}
                 unread={this.props.messageUnread.length}
               />
             </div>

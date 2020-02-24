@@ -9,7 +9,8 @@ const chatroomSchema = new Schema(
     messages: [{ type: Schema.Types.ObjectId, ref: "message" }],
     unreadSender: [{ type: Schema.Types.ObjectId, ref: "message" }],
     unreadReceiver: [{ type: Schema.Types.ObjectId, ref: "message" }],
-    lastMessage: String
+    lastMessage: String,
+    dateMessage: Date
   },
   {
     timestamps: true // Saves createdAt and updatedAt as dates. createdAt will be our timestamp.

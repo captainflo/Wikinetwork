@@ -94,7 +94,7 @@ class UserEdit extends React.Component {
                     label="Description"
                     icon="description"
                   />
-                  <span className="asterick right">100 characters Min</span>
+                  <span className="asterick right">10 characters Min</span>
                 </div>
               </div>
               <div className="col m6 s12">

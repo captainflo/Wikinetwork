@@ -30,11 +30,15 @@ exports.createMessage = function(req, res, next) {
     }
   );
 
-  Chat.findOneAndUpdate({ _id: room }, { lastMessage: message_body }, err => {
-    if (err) {
-      console.log("Something wrong when updating data!");
+  Chat.findOneAndUpdate(
+    { _id: room },
+    { lastMessage: message_body, dateMessage: Date.now() },
+    err => {
+      if (err) {
+        console.log("Something wrong when updating data!");
+      }
     }
-  });
+  );
 
   Chat.findOne({ _id: room }, function(error, chat) {
     if (error) {
