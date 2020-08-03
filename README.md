@@ -15,6 +15,7 @@ The concept of this app is to offer a tinder-style matching between professional
 - express
 - axios
 - mongoose
+- cloudinary
 - passport
 - passport-google-oauth20
 - passport-linkedin-oauth2
@@ -27,7 +28,6 @@ The concept of this app is to offer a tinder-style matching between professional
 - redux-thunk
 - react-redux
 - react-router-dom
-- react-slick
 - materialize-css
 - react-animate-on-scroll
 - socket.io-client
