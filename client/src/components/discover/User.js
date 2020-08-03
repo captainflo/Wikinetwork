@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../actions";
-import "../css/User.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import '../css/User.css';
 
 class UserShow extends React.Component {
   componentDidMount() {
@@ -16,13 +16,13 @@ class UserShow extends React.Component {
             <div className="card-profile">
               <img
                 className="background-profile"
-                src={process.env.PUBLIC_URL + "/images/background.jpg"}
+                src={process.env.PUBLIC_URL + '/images/background.jpg'}
                 alt="background-profile"
               />
               <img
                 src={
                   this.props.user.avatar ||
-                  process.env.PUBLIC_URL + "/images/background.jpg" ||
+                  process.env.PUBLIC_URL + '/images/background.jpg' ||
                   null
                 }
                 alt="Avatar"
@@ -36,11 +36,11 @@ class UserShow extends React.Component {
                   </div>
                 </h4>
                 <p>
-                  <i className="fas fa-signature"></i>{" "}
+                  <i className="fas fa-signature"></i>{' '}
                   {this.props.user.description}
                 </p>
                 <p>
-                  <i className="fas fa-phone-square"></i>{" "}
+                  <i className="fas fa-phone-square"></i>{' '}
                   {this.props.user.phone}
                 </p>
                 <p>
@@ -62,10 +62,9 @@ class UserShow extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     authenticated: state.auth.authenticated,
-    user: state.user.userDetails
+    user: state.user.userDetails,
   };
 }
 

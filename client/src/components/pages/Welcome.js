@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../actions";
-import "../css/Welcome.css";
-import Footer from "../utils/Footer";
-import { Parallax } from "react-materialize";
-import "../css/Welcome.css";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import '../css/Welcome.css';
+import Footer from '../utils/Footer';
+import { Parallax } from 'react-materialize';
+import '../css/Welcome.css';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 class Welcome extends React.Component {
   onSubmit = formValues => {
@@ -18,7 +18,7 @@ class Welcome extends React.Component {
         <div>
           <Parallax
             image={
-              <img alt="" src={process.env.PUBLIC_URL + "/images/banner.jpg"} />
+              <img alt="" src={process.env.PUBLIC_URL + '/images/banner.jpg'} />
             }
             className="image-parallax white-text"
             options={{
@@ -32,7 +32,7 @@ class Welcome extends React.Component {
                   A tap away from valuable connections that expand
                   opportunities.
                 </p>
-                <Link className="button-homepage waves-light" to={"/signin"}>
+                <Link className="button-homepage waves-light" to={'/signin'}>
                   Lean More
                 </Link>
               </div>
@@ -45,7 +45,7 @@ class Welcome extends React.Component {
                 <div className="col m4 s12">
                   <img
                     alt="concept1"
-                    src={process.env.PUBLIC_URL + "/images/home1.png"}
+                    src={process.env.PUBLIC_URL + '/images/home1.png'}
                     className="concept-image"
                   />
                   <p className="grey-text text-darken-3 lighten-3 center">
@@ -57,7 +57,7 @@ class Welcome extends React.Component {
                 <div className="col m4 s12">
                   <img
                     alt="concept2"
-                    src={process.env.PUBLIC_URL + "/images/home2.png"}
+                    src={process.env.PUBLIC_URL + '/images/home2.png'}
                     className="concept-image"
                   />
                   <p className="grey-text text-darken-3 lighten-3 center">
@@ -70,7 +70,7 @@ class Welcome extends React.Component {
                 <div className="col m4 s12">
                   <img
                     alt="concept3"
-                    src={process.env.PUBLIC_URL + "/images/home3.png"}
+                    src={process.env.PUBLIC_URL + '/images/home3.png'}
                     className="concept-image"
                   />
                   <p className="grey-text text-darken-3 lighten-3 center">
@@ -85,7 +85,7 @@ class Welcome extends React.Component {
             image={
               <img
                 alt=""
-                src={process.env.PUBLIC_URL + "/images/banner2.jpg"}
+                src={process.env.PUBLIC_URL + '/images/banner2.jpg'}
                 className="last-banner"
               />
             }
