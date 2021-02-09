@@ -1,16 +1,16 @@
-import React from "react";
-import { Field, reduxForm } from "redux-form";
-import validate from "./Validation";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import * as actions from "../actions";
-import renderField from "./renderField";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import validate from './Validation';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import renderField from './renderField';
+import { Link } from 'react-router-dom';
 
 class Signup extends React.Component {
   render() {
-    const submit = form => {
-      this.props.signup(form, id =>
+    const submit = (form) => {
+      this.props.signup(form, (id) =>
         this.props.history.push(`/dashboard/${id}`)
       );
     };
@@ -81,7 +81,7 @@ class Signup extends React.Component {
             <p>Or</p>
             <p>Sign up with</p>
             <ul>
-              <li style={{ listStyle: "none", paddingBottom: "10px" }}>
+              <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
                 <a
                   href="/auth/google"
                   className="waves-effect waves-light btn social google"
@@ -89,14 +89,14 @@ class Signup extends React.Component {
                   <i className="fab fa-google"></i>Google
                 </a>
               </li>
-              <li style={{ listStyle: "none", paddingBottom: "10px" }}>
+              {/* <li style={{ listStyle: "none", paddingBottom: "10px" }}>
                 <a
                   href="/auth/linkedin"
                   className="waves-effect waves-light btn social linkedin"
                 >
                   <i className="fab fa-linkedin"></i>Linkedin
                 </a>
-              </li>
+              </li> */}
             </ul>
             <Link to="/signin">You have a Account? Sign In!</Link>
             <br></br>
@@ -110,11 +110,11 @@ class Signup extends React.Component {
 
 function mapStateToPros(state) {
   return {
-    errorMessage: state.auth.errorSignup
+    errorMessage: state.auth.errorSignup,
   };
 }
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: "SignUpForm", validate })
+  reduxForm({ form: 'SignUpForm', validate })
 )(Signup);
