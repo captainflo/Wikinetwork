@@ -89,7 +89,7 @@ class Signup extends React.Component {
                   <i className="fab fa-google"></i>Google
                 </a>
               </li>
-              {/* <li style={{ listStyle: "none", paddingBottom: "10px" }}>
+              {/* <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
                 <a
                   href="/auth/linkedin"
                   className="waves-effect waves-light btn social linkedin"
