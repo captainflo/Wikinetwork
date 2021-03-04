@@ -4,7 +4,7 @@ The concept of this app is to offer a tinder-style matching between professional
 
 **Preview**
 
-![](wikinetwork.gif)
+![](wiki.gif)
 
 **Technologies Used**
 
